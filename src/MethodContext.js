@@ -11,13 +11,19 @@ function increaseValue(count) {
 В качестве callback нужно передавать тот же самый обработчик, который был передан при подписке.
  */
 export const obj = {
-    func: increaseValue,
+    boundHandler: null,
+    clickHandler() {
+        this.count++;
+    },
     subscribe() {
-        EventEmitter.on('click', this.func);
+        this.boundHandler = this.clickHandler.bind(this);
+        EventEmitter.on('click', this.boundHandler);
     },
     unsubscribe() {
-        EventEmitter.off('click', this.func);
-    },
+        if (this.boundHandler) {
+            EventEmitter.off('click', this.boundHandler);
+        }
+    }
 };
 
 /*
