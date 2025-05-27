@@ -24,9 +24,6 @@
         "vite-tsconfig-paths": "^4.3.1"
     },
     
-    "devDependencies": {
-        "jest": "^29.7.0"
-        },
     "scripts": {
         "start": "vite",
         "build": "tsc && vite build",
@@ -56,6 +53,9 @@
         },
         "modulePaths": [
             "<rootDir>/src"
-        ]
+        ],
+        "devDependencies": {
+            "jest": "^29.7.0"
+        }
     }
 }
